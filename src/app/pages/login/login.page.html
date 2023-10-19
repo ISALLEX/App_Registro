@@ -1,0 +1,43 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="tol">
+    <ion-title></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-card> 
+    <ion-card-header >
+      <ion-card-title color="black">INICIO DE SESION
+        <ion-icon  name="accessibility-outline"></ion-icon>
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-input  [(ngModel)]= "email" label="Gmail:" labelPlacement="floating" placeholder=""></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input [(ngModel)]="contrasenna" type="password" label="Contraseña:" labelPlacement="floating" placeholder=""></ion-input>
+      </ion-item>
+
+    <ion-item>
+      <ion-select label="Seleccione" label-placement="floating">
+        <ion-select-option value="user">Alumno</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    </ion-card-content>
+    <ion-row>
+      <ion-col>
+        <ion-button expand="block" (click)="login()" expand="block">Acceder</ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button expand="block"(click)="registro()">Registrarse</ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-button expand="block" (click)="obrirModal()">¿Has olvidado tu contraseña?</ion-button>
+  </ion-card>
+  
+</ion-content>

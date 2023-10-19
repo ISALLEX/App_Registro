@@ -1,0 +1,82 @@
+.custom-menu {
+  --background: #3498db;
+  --color: #fff;
+}
+
+.custom-toolbar {
+  --background: #f83b3b;
+  --color: #000000;
+}
+
+.custom-icon {
+  font-size: 45px;
+  color: #ffffff;
+}
+
+.custom-menu-content {
+  --background: #ffffff00;
+  background-image: url('https://w0.peakpx.com/wallpaper/219/300/HD-wallpaper-anime-one-piece-phone-underwater-going-merry-one-piece.jpg');
+  background-size: cover;
+  height: auto;
+} 
+
+.custom-button {
+  --background: none;
+  font-size: 18px;
+  border: none;
+  border-radius: 0;
+  padding: 19px;
+  margin: 5px 0;
+}
+
+.custom-attendance-button {
+  --background: #219ec4;
+  --color: #fff;
+  
+}
+
+.custom-qr-button {
+  --background: #f1c40f;
+  --color: #fff;
+}
+
+.custom-logout-button {
+  --background: #f76b59;
+  --color: #fff;
+}
+
+#car1{
+  margin-top: 20px;
+
+
+}
+#car2{
+  margin-top: 20px;
+  
+}
+#car3{
+  margin-top: 20px;
+  
+}
+.card1{
+--background:  #ffffff00;
+  margin-top: 70px;
+}
+
+.animacion1 {
+  animation-name: slideIn; 
+  animation-duration: 4s; 
+  animation-timing-function: ease-in-out;
+  color: #ffffff;
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateX(-100%); 
+  }
+  100% {
+    transform: translateX(0); 
+  }
+
+
+}

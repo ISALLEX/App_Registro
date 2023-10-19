@@ -1,0 +1,32 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="custom-toolbar">
+    <ion-title>Perfil</ion-title>
+
+    <ion-button slot="start" (click)="volver1()">
+      <ion-icon name="arrow-back-outline"></ion-icon>
+    </ion-button>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="custom-menu-content" [fullscreen]="true">
+
+  <ion-card>
+    <img alt="zoro" src="https://fondosanimados.com/wp-content/uploads/2023/04/zoro-2.jpg" />
+    <ion-card-header>
+      <ion-card-subtitle *ngFor="let i of usuario">Nombre: {{ i.nombre }}</ion-card-subtitle>
+      <ion-card-subtitle *ngFor="let i of usuario">RUT: {{ i.rut }}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-button shape="round" (click)="hola()">P</ion-button>
+    <ion-button shape="round"(click)="adios()">S</ion-button>
+  </ion-card>
+
+  <ion-card class="card2">
+    <img alt="carrera" src="https://pbs.twimg.com/profile_images/1273019238282866689/yEn2L7ny_400x400.jpg" />
+    <ion-card-header>
+      <ion-card-subtitle>CARRERA:</ion-card-subtitle>
+      <ion-card-subtitle>SEDE:</ion-card-subtitle>
+    </ion-card-header>
+  </ion-card>
+  
+</ion-content>

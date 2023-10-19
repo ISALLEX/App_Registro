@@ -1,0 +1,51 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>registroAsistencia</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  
+  <ion-card>
+    <ion-card-content>
+      <ion-item>
+        <ion-input [(ngModel)]="asignatura" label="Asignatura" type="text" labelPlacement="floating" fill="outline" placeholder=""></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-input [(ngModel)]="docente" label="Docente" type="text" labelPlacement="floating" fill="outline" placeholder=""></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-input  [(ngModel)]="fecha" label="Fecha:" labelPlacement="floating" type="text"placeholder=""></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-input  [(ngModel)]="hora" label="Hora:" type="text" labelPlacement="floating" placeholder=""></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input  [(ngModel)]="leccion" label="Leccion" type="text" labelPlacement="floating" placeholder=""></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input  [(ngModel)]="sala" label="Sala" type="text" labelPlacement="floating" placeholder=""></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input  [(ngModel)]="seccion" label="Seccion" type="text" labelPlacement="floating" placeholder=""></ion-input>
+      </ion-item>
+
+      <ion-col>
+        <ion-button   (click)="registroA()"  shape="round">Ingresar Asistencia</ion-button>
+      </ion-col>
+
+    
+        <ion-col>
+          <ion-button  (click)="volverM()" shape="round">Volver</ion-button>
+        </ion-col>
+  
+    </ion-card-content>
+
+  </ion-card>
+</ion-content>
