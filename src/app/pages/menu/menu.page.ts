@@ -1,7 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
-import { IonCard } from '@ionic/angular';
+import { IonCard, NavController } from '@ionic/angular';
 import { MenuController } from '@ionic/angular';
 import { HelperService } from 'src/app/services/helper.service';
 import { Animation } from '@ionic/angular';
@@ -11,7 +11,7 @@ import { LoginPage } from '../login/login.page';
 import { UserService } from 'src/app/services/user.service';
 import { StorageService } from 'src/app/services/storage.service';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-
+import { ToastController } from '@ionic/angular';
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.page.html',
@@ -22,6 +22,7 @@ export class MenuPage implements OnInit {
   usuario:any;
   nombreUsuario:string = "";
   rutUsuario:string = "";
+ 
 
 
   
@@ -32,6 +33,7 @@ export class MenuPage implements OnInit {
 
   private animation!: Animation
 
+
   constructor(private menuCtrl: MenuController,
               private router:Router,
               private helper:HelperService,
@@ -39,7 +41,9 @@ export class MenuPage implements OnInit {
               private route: ActivatedRoute ,
               private userService: UserService,
               private storage:StorageService,
-              private auth:AngularFireAuth 
+              private auth:AngularFireAuth,
+              public toastController: ToastController,
+              private navCtrl: NavController
 
             ) { 
               this.email = this.userService.getUserEmail();
@@ -50,22 +54,37 @@ export class MenuPage implements OnInit {
 
   ngOnInit() {
     this.cargarUsuario();
+
+
   }
 
-  abrirMenuUno() {
-
-    this.menuCtrl.enable(true, 'first-menu');
-    this.menuCtrl.open('first-menu');
+  async mostrarToast() {
+    const toast = await this.toastController.create({
+      message: 'INGRESE SU ASISTENCIA',
+      duration: 2000,
+      position: 'bottom'
+    });
+    toast.present();
   }
 
-  abrirMenuDos() {
-    this.menuCtrl.enable(true, 'second-menu');
-    this.menuCtrl.open('second-menu');
+  async mostrarToast2() {
+    const toast = await this.toastController.create({
+      message: 'ESCANE SU CODIGO',
+      duration: 2000,
+      position: 'bottom'
+    });
+    toast.present();
   }
 
-  abrirMenuTres() {
-    this.menuCtrl.open('end');
+  async mostrarToast3() {
+    const toast = await this.toastController.create({
+      message: 'INFORMACION PERSONAL',
+      duration: 2000,
+      position: 'top'
+    });
+    toast.present();
   }
+
 
  async desLogin(){
   var corfirmar = await this.helper.mostrarConfirmar("Desea cerrar la sesión actual?","Confirmar","Cancelar")
@@ -75,8 +94,10 @@ export class MenuPage implements OnInit {
     }
   }
 
-  abrirPerfil(){
+  async abrirPerfil(){
+    const loader = await this.helper.showLoader("Cargando");
     this.router.navigateByUrl("perfil");
+    await loader.dismiss();
   }
 
   ngAfterViewInit() {
@@ -89,8 +110,10 @@ export class MenuPage implements OnInit {
       .fromTo('background', 'blue', 'var(--background)');
   }
 
-  verAsistencia(){
+ async verAsistencia(){
+    const loader = await this.helper.showLoader("Cargando");
     this.router.navigateByUrl("registro-asistencia")
+    await loader.dismiss();
   }
 
   abrirQr(){

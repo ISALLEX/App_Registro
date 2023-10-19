@@ -35,7 +35,7 @@ export class PerfilPage implements OnInit {
             ) { }
 
   ngOnDestroy(): void {
-    throw new Error('Method not implemented.');
+    console.log("Destruyendo la vista");
   }
 
   ngOnInit() {

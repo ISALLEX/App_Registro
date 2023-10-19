@@ -8,7 +8,7 @@ import { ActivatedRoute, Routes } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { HelperService } from 'src/app/services/helper.service';
-
+import { ToastController } from '@ionic/angular';
 
 
 
@@ -23,6 +23,7 @@ export class LoginPage implements OnInit {
   email:string = "";
   contrasenna:string = "";
   mensage: string = "";
+  isLoading: boolean = false;
 
 
   constructor(private router:Router, 
@@ -32,12 +33,15 @@ export class LoginPage implements OnInit {
               private navCtrl:NavController,
               private userService: UserService,
               private storage:StorageService,
-              private auth:AngularFireAuth
+              private auth:AngularFireAuth,
+              public toastController: ToastController
 
             ) { }
 
   ngOnInit() {
   }
+  
+
 
   async login(){
     if (this.email == "") {
@@ -73,6 +77,26 @@ async obrirModal() {
 
   const { data, role } = await modal.onWillDismiss();
 
+}
+
+async mostrarToast1() {
+  const toast = await this.toastController.create({
+    message: ' BIENVENIDO A REGISTRO PIECE',
+    duration: 4000,
+    position: 'bottom',
+   
+  });
+  toast.present();
+}
+
+async mostrarToast4() {
+  const toast = await this.toastController.create({
+    message: 'INGRESE UN CORREO VALIDO, INGRESADO ANTERIORMENTE',
+    duration: 4000,
+    position: 'bottom',
+  });
+
+  toast.present();
 }
 
 }

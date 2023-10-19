@@ -39,6 +39,10 @@ const routes: Routes = [
     path: 'registro-asistencia',
     loadChildren: () => import('./pages/registro-asistencia/registro-asistencia.module').then( m => m.RegistroAsistenciaPageModule)
   },
+  {
+    path: 'resul-qr',
+    loadChildren: () => import('./modals/resul-qr/resul-qr.module').then( m => m.ResulQrPageModule)
+  },
 ];
 
 @NgModule({

@@ -1,0 +1,32 @@
+ion-header {
+    --background: transparent;
+  }
+  
+  ion-toolbar {
+    --background: transparent;
+  }
+  
+  ion-button {
+    --background: none;
+    --border-width: 0;
+    --color: #007bff;
+    --background-activated: none;
+  }
+  
+  ion-icon {
+    --color: #007bff;
+  }
+  
+  ion-title {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  ion-content {
+    --background: #f3f3f3;
+  }
+  
+  ion-button {
+    margin: 16px;
+  }
+  

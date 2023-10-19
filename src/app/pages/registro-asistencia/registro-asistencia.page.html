@@ -1,6 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>registroAsistencia</ion-title>
+    <ion-title>Registro De Asistencia</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -37,12 +37,12 @@
       </ion-item>
 
       <ion-col>
-        <ion-button   (click)="registroA()"  shape="round">Ingresar Asistencia</ion-button>
+        <ion-button class="registro-button"  (click)="registroA()"  shape="round">Ingresar Asistencia</ion-button>
       </ion-col>
 
     
         <ion-col>
-          <ion-button  (click)="volverM()" shape="round">Volver</ion-button>
+          <ion-button class="volver-button" [routerLink]="'/menu'" shape="round">Volver</ion-button>
         </ion-col>
   
     </ion-card-content>

@@ -44,3 +44,13 @@ ion-content {
   --color: #000000
   --margin-top: 10px;
  }
+
+ ion-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+
+
