@@ -4,7 +4,9 @@ import { Router } from '@angular/router';
 import { HelperService } from 'src/app/services/helper.service';
 import { StorageService } from 'src/app/services/storage.service';
 import { Usuario } from 'src/app/models/usuario';
-
+import { Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { TiempoService } from 'src/app/services/tiempo.service';
+import { Region } from 'src/app/models/region';
 @Component({
   selector: 'app-registro',
   templateUrl: './registro.page.html',
@@ -16,17 +18,26 @@ export class RegistroPage implements OnInit {
   contrasenna:string = "";
   nombre:string = "";
   rut:string ="";
+  comunas:any[]=[];
+  regiones:Region[]=[];
+
+  comunaSel:number = 0;
+  regionSel:number = 0;
 
   constructor(private router:Router,
               private auth:AngularFireAuth,
               private helper:HelperService,
               private storageService:StorageService,
+              private formBuilder: FormBuilder,
+              private tiempoService: TiempoService
 
             ) { }
 
   ngOnInit() {
 
     this.vistaUser();
+    this.cargarComuna();
+    this.cargarRegion();
 
   }
 
@@ -43,6 +54,16 @@ export class RegistroPage implements OnInit {
     if (this.correo == '') {
       await loader.dismiss(); 
       await this.helper.mostrarAlerta("Debe ingresar un correo","Error");
+      return;
+    }
+    if (!this.validarRut(this.rut)) {
+      await loader.dismiss();
+      await this.helper.mostrarAlerta("RUT no válido", "Error");
+      return;
+    }
+    if (!this.validarNombre(this.nombre)) {
+      await loader.dismiss();
+      await this.helper.mostrarAlerta("Nombre no válido", "Error");
       return;
     }
       var user = 
@@ -73,10 +94,64 @@ export class RegistroPage implements OnInit {
             await loader.dismiss();
             await this.helper.mostrarAlerta("El largo de la contraseña es muy corto.","Error");
           }
+        
         }     
 
   }
+
+
+validarNombre(nombre: string): boolean {
+   
+    if (nombre.length < 3) {
+      return false; 
+    }
   
+    return true;
+  }
+
+validarRut(rut: string): boolean {
+    rut = rut.replace(/\./g, '').replace('-', '').toUpperCase();
+    const cuerpo = rut.slice(0, -1);
+    const digitoVerificador = rut.slice(-1);
   
+    let suma = 0;
+    let multiplicador = 2;
+  
+    for (let i = cuerpo.length - 1; i >= 0; i--) {
+      suma += Number(cuerpo[i]) * multiplicador;
+      multiplicador = multiplicador === 7 ? 2 : multiplicador + 1;
+    }
+  
+    const digitoEsperado = 11 - (suma % 11);
+    const digitoEsperadoStr = digitoEsperado === 10 ? 'K' : digitoEsperado.toString();
+  
+    return digitoEsperadoStr === digitoVerificador;
+  }
+
+
+  async cargarComuna(){
+    try {
+      const req = await this.tiempoService.getComuna(this.regionSel);
+      this.comunas = req.data;
+    } catch (error:any) {
+      console.log("ERROR", error);
+      
+      this.helper.mostrarAlerta(error.error.msg,"Error")
+    }
+  }
+
+  
+  async cargarRegion(){
+    try {
+      const req = await this.tiempoService.getRegion();
+      this.regiones = req.data;
+      console.log("REGIONES",this.regiones);
+    } catch (error) {
+      
+    }
+  }
+  
+
+
 
 }

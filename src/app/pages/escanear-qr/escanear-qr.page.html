@@ -1,12 +1,26 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-button [routerLink]="'/menu'">
-    <ion-icon size="large" slot="start" name="caret-back-circle-outline"></ion-icon>
+    <ion-title>Escanear Qr</ion-title>
+    <ion-button shape="round" class="botonvolver" [routerLink]="'/menu'">
+      <ion-icon size="large" slot="start" name="caret-back-circle-outline"></ion-icon>
     </ion-button>
-    <ion-title>escanearQr</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-button (click)="scanner()">escan</ion-button>
+<ion-card>
+<ion-card-content >
+ <img class="scan" src="https://upload.wikimedia.org/wikipedia/en/2/2f/Scan_app_logo.png" alt="scan">
+</ion-card-content>
+</ion-card>
+
+
+  <ion-button class="botonscan"  shape="round" expand="full" (click)="scan()">Escanear</ion-button>
+
+  <ion-button class="botonscan"  shape="round" expand="full" (click)="mostrarCamera()">Abrir Camara</ion-button>
+
+
+
+
+
 </ion-content>

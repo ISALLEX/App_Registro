@@ -9,6 +9,8 @@ import { ModalController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { HelperService } from 'src/app/services/helper.service';
 import { ToastController } from '@ionic/angular';
+import { Validators, FormBuilder, FormGroup } from '@angular/forms';
+
 
 
 
@@ -34,36 +36,36 @@ export class LoginPage implements OnInit {
               private userService: UserService,
               private storage:StorageService,
               private auth:AngularFireAuth,
-              public toastController: ToastController
+              public toastController: ToastController,
+              private formBuilder: FormBuilder
 
             ) { }
 
   ngOnInit() {
+  
   }
   
 
 
-  async login(){
-    if (this.email == "") {
-    
-      this.helperService.mostrarAlerta("Debe ingresar un email", "Advertencia");
-      return;
-    }
-    if (this.contrasenna == "") {
-      alert("Debe ingresar una contraseña.");
-      return;
-    }
-    
-    try {
-      const req = await this.auth.signInWithEmailAndPassword(this.email,this.contrasenna);
-      this.storage.userEmail = this.email;
-      console.log("TOKEN", await req.user?.getIdToken());
-      await this.router.navigateByUrl("menu");
-    } catch (error) {
-      
-    }
 
- }
+ 
+
+ async login() {
+  if (!this.email || !this.contrasenna) {
+    this.helperService.mostrarAlerta("Por favor, complete todos los campos.", "Advertencia");
+    return;
+  }
+
+  try {
+    const req = await this.auth.signInWithEmailAndPassword(this.email, this.contrasenna);
+    this.storage.userEmail = this.email;
+    console.log("TOKEN", await req.user?.getIdToken());
+    await this.router.navigateByUrl("menu");
+  } catch (error) {
+    
+    console.error("Error de autenticación:", error);
+  }
+}
 
  registro(){
   this.router.navigateByUrl("registro");
@@ -81,11 +83,13 @@ async obrirModal() {
 
 async mostrarToast1() {
   const toast = await this.toastController.create({
-    message: ' BIENVENIDO A REGISTRO PIECE',
+    message: "BIENVENIDO A REGISTRO PIECE",
     duration: 4000,
     position: 'bottom',
+    color: 'success', 
    
   });
+
   toast.present();
 }
 

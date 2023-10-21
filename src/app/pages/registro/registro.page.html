@@ -13,7 +13,7 @@
       </ion-item>
   
       <ion-item>
-        <ion-input [(ngModel)]="correo" label="Ingrese Correo:" type="email" labelPlacement="floating" fill="outline" placeholder="xxxxx@gmail.com"></ion-input>
+        <ion-input [(ngModel)]="correo" label="Ingrese Correo:" type="email" labelPlacement="floating" fill="outline" placeholder="xxxxxxxx@gmail.com"></ion-input>
       </ion-item>
   
       <ion-item>
@@ -21,8 +21,25 @@
       </ion-item>
   
       <ion-item>
-        <ion-input  [(ngModel)]="rut" label="Ingrese Rut:" type="tel" labelPlacement="floating" placeholder="11.111.111-1"></ion-input>
+        <ion-input  [(ngModel)]="rut" label="Ingrese Rut:" type="tel" labelPlacement="floating" placeholder="21333111-1"></ion-input>
       </ion-item>
+
+    
+      <ion-list>
+        <ion-item>
+          <ion-select (ionChange)="cargarComuna()" placeholder="Seleccione" [(ngModel)]="regionSel">
+            <ion-select-option [value]="r.id" *ngFor="let r of regiones">{{r.nombre}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
+      
+      <ion-list>
+        <ion-item>
+          <ion-select  placeholder="Seleccione" [(ngModel)]="comunaSel">
+            <ion-select-option [value]="r.id" *ngFor="let r of comunas">{{r.nombre}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
 
       <ion-col>
         <ion-button class="xico1" (click)="registro()"  shape="round">Crear</ion-button>
@@ -32,6 +49,8 @@
         <ion-col>
           <ion-button class="xico" (click)="volver()" shape="round">Volver</ion-button>
         </ion-col>
+
+        
   
     </ion-card-content>
 

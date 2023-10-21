@@ -14,10 +14,15 @@
     </ion-card-header>
     <ion-card-content>
       <ion-item>
-        <ion-input  [(ngModel)]= "email" label="Gmail:" labelPlacement="floating" placeholder=""></ion-input>
+        <ion-label position="floating">Gmail:</ion-label>
+        <ion-input  [(ngModel)]= "email" labelPlacement="floating" placeholder=""></ion-input>
+        <ion-note *ngIf="!email">El correo electrónico es obligatorio.</ion-note>
       </ion-item>
       <ion-item>
-        <ion-input [(ngModel)]="contrasenna" type="password" label="Contraseña:" labelPlacement="floating" placeholder=""></ion-input>
+        <ion-label position="floating">Contraseña:</ion-label>
+        <ion-input required minlength="6" [(ngModel)]="contrasenna" type="password" labelPlacement="floating" placeholder=""></ion-input>
+        <ion-note *ngIf="!contrasenna">La contraseña es obligatoria.</ion-note>
+        <ion-note *ngIf="contrasenna && contrasenna.length < 6">La contraseña debe tener al menos 6 caracteres.</ion-note>
       </ion-item>
 
     <ion-item>
@@ -29,7 +34,7 @@
     </ion-card-content>
     <ion-row>
       <ion-col>
-        <ion-button   (click)="mostrarToast1()" expand="block" (click)="login()" expand="block">Acceder</ion-button>
+        <ion-button (click)="mostrarToast1()" expand="block" (click)="login()" expand="block">Acceder</ion-button>
       </ion-col>
     </ion-row>
     <ion-row>

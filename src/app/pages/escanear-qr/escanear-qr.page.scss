@@ -6,11 +6,27 @@ ion-header {
     --background: transparent;
   }
   
-  ion-button {
-    --background: none;
+.botonvolver{
+    --background: #67bdf7;
+
+
+
     --border-width: 0;
-    --color: #007bff;
-    --background-activated: none;
+    --color: #ffffff;
+
+
+  }
+
+  .botonscan{
+    --background: #67bdf7;
+
+
+    --border-width: 0;
+    --color: #ffffff;
+
+    margin-top: 70px;
+    
+
   }
   
   ion-icon {
@@ -23,10 +39,34 @@ ion-header {
   }
   
   ion-content {
-    --background: #f3f3f3;
+    --background: #00000000;
   }
   
-  ion-button {
-    margin: 16px;
+  .scan{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 300px;
+    max-height: 400px;
+    vertical-align: middle;
+    animation: changeColor 5s linear infinite;
+
   }
+  @keyframes changeColor {
+    0% {
+        filter: hue-rotate(0deg);
+    }
+    100% {
+        filter: hue-rotate(360deg);
+    }
+}
+
+
+  ion-card-content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  } 
+  
   

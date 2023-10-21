@@ -1,51 +1,34 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>Registro De Asistencia</ion-title>
+  <ion-toolbar class="tol1">
+    <ion-button id="boton1" [routerLink]="'/menu'">
+      <ion-icon size="large" slot="start" name="caret-back-circle-outline"></ion-icon>
+      </ion-button>
+    <ion-title>Asistencia</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content class="custom-menu-content" [fullscreen]="true">
   
-  <ion-card>
-    <ion-card-content>
-      <ion-item>
-        <ion-input [(ngModel)]="asignatura" label="Asignatura" type="text" labelPlacement="floating" fill="outline" placeholder=""></ion-input>
-      </ion-item>
-  
-      <ion-item>
-        <ion-input [(ngModel)]="docente" label="Docente" type="text" labelPlacement="floating" fill="outline" placeholder=""></ion-input>
-      </ion-item>
-  
-      <ion-item>
-        <ion-input  [(ngModel)]="fecha" label="Fecha:" labelPlacement="floating" type="text"placeholder=""></ion-input>
-      </ion-item>
-  
-      <ion-item>
-        <ion-input  [(ngModel)]="hora" label="Hora:" type="text" labelPlacement="floating" placeholder=""></ion-input>
-      </ion-item>
 
-      <ion-item>
-        <ion-input  [(ngModel)]="leccion" label="Leccion" type="text" labelPlacement="floating" placeholder=""></ion-input>
-      </ion-item>
 
-      <ion-item>
-        <ion-input  [(ngModel)]="sala" label="Sala" type="text" labelPlacement="floating" placeholder=""></ion-input>
-      </ion-item>
 
-      <ion-item>
-        <ion-input  [(ngModel)]="seccion" label="Seccion" type="text" labelPlacement="floating" placeholder=""></ion-input>
-      </ion-item>
-
-      <ion-col>
-        <ion-button class="registro-button"  (click)="registroA()"  shape="round">Ingresar Asistencia</ion-button>
-      </ion-col>
-
+    <ion-card class="card2" *ngFor="let item of arrayAsig">
     
-        <ion-col>
-          <ion-button class="volver-button" [routerLink]="'/menu'" shape="round">Volver</ion-button>
-        </ion-col>
-  
-    </ion-card-content>
+    <ion-card-header>
+      <ion-card-subtitle>
+        <h6>{{item.leccion}}</h6>
+      </ion-card-subtitle>
 
-  </ion-card>
+      <ion-card-title> {{item.asignatura}}</ion-card-title>
+    
+    </ion-card-header>
+  
+    <ion-card-content>
+      <p>Docente: {{item.docente}}</p>
+      <p>Fecha:  {{item.fecha}}</p>
+      <p>Hora {{item.hora}}</p>
+      <p>Sala: {{item.sala}} </p>
+      <p>Seccion: {{item.seccion}}  </p>
+    </ion-card-content>
+  </ion-card> 
 </ion-content>

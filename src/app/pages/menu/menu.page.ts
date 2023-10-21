@@ -12,6 +12,7 @@ import { UserService } from 'src/app/services/user.service';
 import { StorageService } from 'src/app/services/storage.service';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { ToastController } from '@ionic/angular';
+import { TiempoService } from 'src/app/services/tiempo.service';
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.page.html',
@@ -22,6 +23,8 @@ export class MenuPage implements OnInit {
   usuario:any;
   nombreUsuario:string = "";
   rutUsuario:string = "";
+  
+
  
 
 
@@ -43,7 +46,9 @@ export class MenuPage implements OnInit {
               private storage:StorageService,
               private auth:AngularFireAuth,
               public toastController: ToastController,
-              private navCtrl: NavController
+              private navCtrl: NavController,
+             
+              
 
             ) { 
               this.email = this.userService.getUserEmail();
@@ -60,8 +65,8 @@ export class MenuPage implements OnInit {
 
   async mostrarToast() {
     const toast = await this.toastController.create({
-      message: 'INGRESE SU ASISTENCIA',
-      duration: 2000,
+      message: 'ASISTENCIA SECCION: 002D',
+      duration: 3000,
       position: 'bottom'
     });
     toast.present();
@@ -130,6 +135,8 @@ export class MenuPage implements OnInit {
     this.nombreUsuario =  this.usuario[0].nombre;
     this.rutUsuario =  this.usuario[0].rut;
   }
+  
 
+  
 
 }

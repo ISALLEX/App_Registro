@@ -1,3 +1,4 @@
+
 export interface Asistencia{
 
 asignatura:string;
@@ -9,3 +10,5 @@ sala: string;
 seccion: string;
 
 }
+
+
