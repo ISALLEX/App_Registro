@@ -12,13 +12,18 @@
 <ion-card-content >
  <img class="scan" src="https://upload.wikimedia.org/wikipedia/en/2/2f/Scan_app_logo.png" alt="scan">
 </ion-card-content>
+
+<ion-button class="botonscan"  shape="round" expand="full" (click)="scan()">Escanear</ion-button>
+
+<ion-button class="botonscan"  shape="round" expand="full" (click)="mostrarCamera()">Abrir Camara</ion-button>
 </ion-card>
 
 
-  <ion-button class="botonscan"  shape="round" expand="full" (click)="scan()">Escanear</ion-button>
+<ion-img [src]="fotoUrl" *ngIf="fotoUrl"></ion-img>
 
-  <ion-button class="botonscan"  shape="round" expand="full" (click)="mostrarCamera()">Abrir Camara</ion-button>
 
+
+ 
 
 
 

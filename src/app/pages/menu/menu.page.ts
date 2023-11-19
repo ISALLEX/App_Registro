@@ -13,6 +13,7 @@ import { StorageService } from 'src/app/services/storage.service';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { ToastController } from '@ionic/angular';
 import { TiempoService } from 'src/app/services/tiempo.service';
+import { Menu } from 'src/app/models/Menu';
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.page.html',
@@ -23,6 +24,10 @@ export class MenuPage implements OnInit {
   usuario:any;
   nombreUsuario:string = "";
   rutUsuario:string = "";
+
+  arrayMenu:Menu[]=[];
+
+  loading:boolean = true;
   
 
  
@@ -59,6 +64,12 @@ export class MenuPage implements OnInit {
 
   ngOnInit() {
     this.cargarUsuario();
+
+    console.log("inicio del componente");
+
+    this.cargarMenu();
+
+    setTimeout(this.simularCargaPerfil, 4000);
 
 
   }
@@ -135,8 +146,54 @@ export class MenuPage implements OnInit {
     this.nombreUsuario =  this.usuario[0].nombre;
     this.rutUsuario =  this.usuario[0].rut;
   }
+
+  cargarMenu(){
+    this.arrayMenu.push
+    (
+      {
+        id:1,
+        titulo:"Perfil",
+        icono:"person-outline",
+        url:"/SECCION001D/perfil",
+        disabled:true
+      },
+    )
+  }
+
+  simularCargaPerfil = () => {
+    this.loading = false;
+  }
+  
   
 
   
 
+
+
+Perfil(){
+  var parametroN1 = 123456;
+  this.router.navigateByUrl(parametroN1 + "/perfil");
+}
+
+ngOnDestroy(): void {
+  console.log("Destruyendo la vista");
+}
+
+
+ionViewWillEnter(){
+  console.log("Entrando a la vista");
+}
+
+ionViewDidEnter(){
+  console.log("Vista cargada");
+}
+
+ionViewWillLeave(){
+  console.log("Abandonando la vista");
+}
+
+ionViewDidLeave(){
+  console.log("Abandonó la vista");
+  this.menuCtrl.close();
+}
 }

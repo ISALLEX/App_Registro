@@ -36,7 +36,6 @@ export class RegistroPage implements OnInit {
   ngOnInit() {
 
     this.vistaUser();
-    this.cargarComuna();
     this.cargarRegion();
 
   }

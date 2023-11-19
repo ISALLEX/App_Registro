@@ -55,31 +55,4 @@ export class StorageService {
   }
 
 
-  
-  async obtenerAsistencia():Promise<Asistencia[]>{
-    const storageData = await this.getItem(storageAsistencia);
-    if (storageData == null) {
-      return[];
-    }
-
-
-    const data:any[] = JSON.parse(storageData);
-    if (data) {
-      return data;
-    }
-    else{
-      return [];
-    }
-  }
-
-  async guardarAsistencia(asistencia:Asistencia[]){
-    var asistencias = await this.obtenerAsistencia();
-    for (const i of asistencias) {
-      if (i) {
-        asistencia.push(i);
-      }
-    }
-    this.setItem(storageAsistencia,JSON.stringify(asistencia));
-  }
-
 }

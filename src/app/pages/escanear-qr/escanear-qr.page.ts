@@ -4,6 +4,8 @@ import { HelperService } from 'src/app/services/helper.service';
 import { ResulQrPage } from 'src/app/modals/resul-qr/resul-qr.page';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 import { Asistencia } from 'src/app/models/asistencia';
+import { AsistenciaService } from 'src/app/services/asistencia.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -12,6 +14,9 @@ import { Asistencia } from 'src/app/models/asistencia';
   styleUrls: ['./escanear-qr.page.scss'],
 })
 export class EscanearQrPage implements OnInit {
+  fotoUrl: string | undefined;
+
+
   resultQr:any[]=[];
   nombre:string = '';
   asignatura:string = "";
@@ -23,6 +28,9 @@ export class EscanearQrPage implements OnInit {
   seccion:string = "";
 
   constructor(private helper:HelperService,
+              private asistenciaService:AsistenciaService,
+              private router:Router
+              
              ) { }
 
   ngOnInit() {
@@ -66,9 +74,10 @@ export class EscanearQrPage implements OnInit {
   async mostrarCamera(){
     const foto = await Camera.getPhoto({
       resultType: CameraResultType.DataUrl,
-      source:CameraSource.Camera
+      source:CameraSource.Photos,
+      quality: 90,
     });
-    const fotoUrl = foto.dataUrl;
+    this.fotoUrl = foto.dataUrl;
 
 
   }

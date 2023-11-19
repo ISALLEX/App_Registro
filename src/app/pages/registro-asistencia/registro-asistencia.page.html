@@ -8,27 +8,23 @@
 </ion-header>
 
 <ion-content class="custom-menu-content" [fullscreen]="true">
-  
 
-
-
-    <ion-card class="card2" *ngFor="let item of arrayAsig">
-    
+  <ion-card *ngFor="let asistencia of asistencias">
     <ion-card-header>
-      <ion-card-subtitle>
-        <h6>{{item.leccion}}</h6>
-      </ion-card-subtitle>
-
-      <ion-card-title> {{item.asignatura}}</ion-card-title>
-    
+      <ion-card-title>{{ asistencia.asignatura }}</ion-card-title>
     </ion-card-header>
-  
+
     <ion-card-content>
-      <p>Docente: {{item.docente}}</p>
-      <p>Fecha:  {{item.fecha}}</p>
-      <p>Hora {{item.hora}}</p>
-      <p>Sala: {{item.sala}} </p>
-      <p>Seccion: {{item.seccion}}  </p>
+      <p>Docente: {{ asistencia.docente }}</p>
+      <p>Fecha: {{ asistencia.fecha }}</p>
+      <p>Hora: {{ asistencia.hora }}</p>
+      <p>Leccion: {{ asistencia.leccion }}</p>
+      <p>Sala: {{ asistencia.sala }}</p>
+      <p>Seccion: {{ asistencia.seccion }}</p>
     </ion-card-content>
-  </ion-card> 
+  </ion-card>
+  
+
+
 </ion-content>
+

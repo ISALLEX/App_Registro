@@ -21,7 +21,7 @@ import { HttpClientModule } from '@angular/common/http';
   AngularFireAuthModule,HttpClientModule
   
 ],
-  providers: [{ provide: RouteReuseStrategy, useClass:  IonicRouteStrategy }],
+  providers: [{ provide: RouteReuseStrategy, useClass:  IonicRouteStrategy }, Geolocation],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

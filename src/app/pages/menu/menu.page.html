@@ -1,20 +1,34 @@
 <ion-header [translucent]="true">
     <ion-toolbar class="custom-toolbar">
         
-    <ion-title color="white" animate="true" class="animacion1" *ngFor="let i of usuario"> BIENVENIDO {{ i.email }}
-
-    </ion-title>
-        <ion-buttons slot="start">
-          <ion-button (click)="abrirPerfil()" class="custom-profile-button" (click)="mostrarToast3()">
-            <ion-icon class="custom-icon" name="person-circle-outline"></ion-icon>
-           
-          </ion-button>
-        </ion-buttons>
-      </ion-toolbar>
+    <ion-title color="white" animate="true" class="animacion1" *ngFor="let i of usuario"> BIENVENIDO {{ i.email }}</ion-title>
+    </ion-toolbar>
   </ion-header>
 
   
 <ion-content [fullscreen]="true" class="custom-menu-content">
+
+  <ng-container animate="true" class="animacion1"  *ngIf="!loading">
+    <ng-container *ngFor="let menu of arrayMenu">
+      <ion-card  class="menuEnabled" [routerLink]="menu.url" *ngIf="menu.disabled">
+        <div (click)="mostrarToast3()" class="box">
+        
+          <h6>
+          <ion-icon size="large" [name]="menu.icono"></ion-icon>
+           PERFIL
+          </h6>
+        </div>
+      </ion-card> 
+  
+    </ng-container>
+  </ng-container>
+
+    
+  <ng-container *ngIf="loading"> 
+    <div class="boxSkeleton" *ngFor="let item of [1,2,3,4,5]">
+      <ion-skeleton-text class="skeleton"></ion-skeleton-text>
+    </div>
+  </ng-container>
 
   
 

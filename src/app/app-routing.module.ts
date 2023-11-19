@@ -33,18 +33,25 @@ const routes: Routes = [
     loadChildren: () => import('./pages/reset-password/reset-password.module').then( m => m.ResetPasswordPageModule)
   },
   {
+    canActivate:[AngularFireAuthGuard], 
+    data:{authGuardPipe: redireccionLogin},
     path: 'escanear-qr',
     loadChildren: () => import('./pages/escanear-qr/escanear-qr.module').then( m => m.EscanearQrPageModule)
   },
   {
-    path: 'perfil',
+    canActivate:[AngularFireAuthGuard], 
+    data:{authGuardPipe: redireccionLogin},
+    path: ':num/perfil',
     loadChildren: () => import('./pages/perfil/perfil.module').then( m => m.PerfilPageModule)
   },
   {
+    canActivate:[AngularFireAuthGuard], 
+    data:{authGuardPipe: redireccionLogin},
     path: 'registro-asistencia',
     loadChildren: () => import('./pages/registro-asistencia/registro-asistencia.module').then( m => m.RegistroAsistenciaPageModule)
   },
   {
+
     path: 'resul-qr',
     loadChildren: () => import('./modals/resul-qr/resul-qr.module').then( m => m.ResulQrPageModule)
   },

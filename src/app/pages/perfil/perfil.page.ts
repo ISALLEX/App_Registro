@@ -6,6 +6,7 @@ import { UserService } from 'src/app/services/user.service';
 import { StorageService } from 'src/app/services/storage.service';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { OnDestroy } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-perfil',
@@ -20,6 +21,8 @@ export class PerfilPage implements OnInit {
   @ViewChild (IonCard, {read:ElementRef})
   card!: ElementRef<HTMLIonCardElement>;
 
+  parametronumeroUno:number | undefined;
+
   
 
     private animation!: Animation;
@@ -30,7 +33,9 @@ export class PerfilPage implements OnInit {
               private animationCtrl:AnimationController,
               private userService: UserService,
               private storage:StorageService,
-              private auth:AngularFireAuth 
+              private auth:AngularFireAuth,
+              private activatedRoute:ActivatedRoute
+
 
             ) { }
 
@@ -40,6 +45,8 @@ export class PerfilPage implements OnInit {
 
   ngOnInit() {
     this.cargarUsuario1();
+    this.parametronumeroUno = this.activatedRoute.snapshot.params['num'];
+    console.log("parametro: ", this.parametronumeroUno);
   }
 
   volver1(){

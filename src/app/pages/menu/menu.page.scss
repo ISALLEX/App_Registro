@@ -79,6 +79,47 @@
   }
 }
 
+/* Estilo para el contenedor ng-container */
+ng-container {
+  display: block;
+  width: 100%;
+}
+
+/* Estilo para la tarjeta ion-card */
+ion-card {
+  border: 1px solid #cccccc00;
+  border-radius: 20px;
+  margin: 20px;
+  padding: 2px;
+  background-color: #d8c9e600; /* Morado pastel */
+  color: #ffffff; /* Letras en blanco */
+}
+
+/* Estilo para la clase menuEnabled */
+.menuEnabled {
+  background-color: #b8a0d1; /* Morado pastel más oscuro */
+}
+
+
+.box {
+  cursor: pointer;
+  padding: 10px;
+}
+
+
+.box h4 {
+  margin: 0;
+}
+
+
+ion-icon {
+  margin-right: 5px;
+  color: #fff; 
+}
+
+
+
+
 
 
 
