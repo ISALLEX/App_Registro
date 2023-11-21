@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ModalController } from '@ionic/angular';
+import { ModalController, NavParams } from '@ionic/angular';
 import { AsistenciaService } from 'src/app/services/asistencia.service';
 import { HelperService } from 'src/app/services/helper.service';
 import { StorageService } from 'src/app/services/storage.service';
@@ -12,10 +12,9 @@ import { StorageService } from 'src/app/services/storage.service';
 })
 export class ResulQrPage implements OnInit {
 
-  asistencias:any = {};
-
+  @Input() asistencias:any;
+  infoQr: any;
   
-  @Input() dataQr:any;
   dataAsistencia:any;
 
   nombre:string = '';
@@ -31,13 +30,14 @@ export class ResulQrPage implements OnInit {
               private storageService:StorageService,
               private asistenciaService:AsistenciaService,
               private helper:HelperService,
-              private router:Router
+              private router:Router,
+              private navParams: NavParams
               
-            ) { }
+            ) {   this.infoQr = this.navParams.get('dataQr');
+                  console.log('Info QR:', this.infoQr)}
 
   ngOnInit() {
 
-    console.log("Propiedades recibidas-->",this.asistencias);
     this.vistaAsistencia();
   }
 
@@ -45,25 +45,23 @@ export class ResulQrPage implements OnInit {
     this.modalController.dismiss();
   }
 
-  async guardarAsistencia() {
-    // Asegúrate de que todos los campos estén llenos
-    if (!this.asistencias.asignatura || !this.asistencias.docente || !this.asistencias.fecha ||
-        !this.asistencias.hora || !this.asistencias.leccion || !this.asistencias.sala || !this.asistencias.seccion )  {
-          await this.helper.mostrarAlerta("Debe revisar su asistencia","Información");
-          await this.router.navigateByUrl("menu");
-      return;
-    }
-
-    this.asistenciaService.guardarAsistencia(this.asistencias);
-    await this.router.navigateByUrl('menu');
-    await this.helper.mostrarAlerta("Asistencia registrada correctamente","Información");  
-
-    // Limpia el formulario después de guardar
-    this.asistencias = {};
-  }
+ 
 
   async vistaAsistencia(){
     console.log("ASISTENCIA STORAGE",await this.asistenciaService.obtenerAsistencia());
+  }
+
+
+  async guardarAsistencia(){
+
+    this.modalController.dismiss({
+      infoQr: this.infoQr
+    });
+
+    this.asistenciaService.guardarAsistencia(this.infoQr);
+    await this.helper.mostrarAlerta("Debe revisar su asistencia","Información");
+    
+
   }
 
  

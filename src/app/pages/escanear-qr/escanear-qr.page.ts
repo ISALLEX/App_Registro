@@ -17,7 +17,7 @@ export class EscanearQrPage implements OnInit {
   fotoUrl: string | undefined;
 
 
-  resultQr:any[]=[];
+  infoQr:any[]=[];
   nombre:string = '';
   asignatura:string = "";
   docente:string = "";
@@ -44,10 +44,15 @@ export class EscanearQrPage implements OnInit {
     var resultadoQr = (await BarcodeScanner.scan()).code;
      
     if (resultadoQr) {
-      console.log("QR", JSON.parse(resultadoQr));
+      const infoQr = JSON.parse(resultadoQr);
+
+      const parametros = {dataQr:infoQr};
+    
+      this.helper.showModal(ResulQrPage,parametros);
     }
-    var infoQr = [];
-    infoQr.push(
+    var infoQr = 
+    [
+    
       {
         asignatura:this.asignatura,
         docente:this.docente,
@@ -55,17 +60,13 @@ export class EscanearQrPage implements OnInit {
         hora:this.hora,
         leccion:this.leccion,
         sala:this.sala,
-        seccion:this.seccion,
+        seccion:this.seccion
 
 
       
-        },
-      
-              );
+        }
+      ];
 
-              const parametros = {dataQr:infoQr};
-    
-    this.helper.showModal(ResulQrPage,parametros);
 
   }
 

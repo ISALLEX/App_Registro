@@ -9,18 +9,20 @@
 
 <ion-content class="custom-menu-content" [fullscreen]="true">
 
-  <ion-card *ngFor="let asistencia of asistencias">
+  <ion-card *ngFor="let i of asistencias">
     <ion-card-header>
-      <ion-card-title>{{ asistencia.asignatura }}</ion-card-title>
+      <ion-card-title>{{ i.asignatura }}</ion-card-title>
     </ion-card-header>
 
     <ion-card-content>
-      <p>Docente: {{ asistencia.docente }}</p>
-      <p>Fecha: {{ asistencia.fecha }}</p>
-      <p>Hora: {{ asistencia.hora }}</p>
-      <p>Leccion: {{ asistencia.leccion }}</p>
-      <p>Sala: {{ asistencia.sala }}</p>
-      <p>Seccion: {{ asistencia.seccion }}</p>
+      <p>Docente: {{ i.docente }}</p>
+      <p>Fecha: {{ i.fecha }}</p>
+      <p>Hora: {{ i.hora }}</p>
+      <p>Leccion: {{ i.leccion }}</p>
+      <p>Sala: {{ i.sala }}</p>
+      <p>Seccion: {{ i.seccion }}</p>
+
+      <ion-button (click)="eliminarAsistencia(i)">Eliminar</ion-button>
     </ion-card-content>
   </ion-card>
   

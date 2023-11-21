@@ -1,4 +1,8 @@
 import { Injectable } from '@angular/core';
+import { Asistencia } from '../models/asistencia';
+import { Preferences } from '@capacitor/preferences';
+
+const storageAsistencia = 'asistenciaData';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +13,7 @@ export class AsistenciaService {
   constructor() { }
 
 
-  guardarAsistencia(asistencia: any): void {
+  guardarAsistencia(asistencia:any): void {
     
     const asistenciasGuardadas = this.obtenerAsistencia();
 
@@ -20,13 +24,16 @@ export class AsistenciaService {
     localStorage.setItem(this.storageKey, JSON.stringify(asistenciasGuardadas ));
   }
 
-  obtenerAsistencia(): any[] {
+  obtenerAsistencia(): any [] {
     
     const asistenciasGuardadas  = localStorage.getItem(this.storageKey);
 
     
     return asistenciasGuardadas  ? JSON.parse(asistenciasGuardadas ) : [];
   }
+
+ 
+  
 
 
 }

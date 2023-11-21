@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Preferences } from '@capacitor/preferences'; 
 import { Usuario } from '../models/usuario';
-import {Asistencia } from '../models/asistencia';
+
 
 const storageUser = 'usuarioData';
 
-const storageAsistencia = 'asistenciaData';
+
 
 @Injectable({
   providedIn: 'root'
