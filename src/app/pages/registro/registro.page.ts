@@ -36,7 +36,7 @@ export class RegistroPage implements OnInit {
   ngOnInit() {
 
     this.vistaUser();
-    this.cargarRegion();
+   /*  this.cargarRegion(); */
 
   }
 
@@ -128,7 +128,7 @@ validarRut(rut: string): boolean {
   }
 
 
-  async cargarComuna(){
+ /*  async cargarComuna(){
     try {
       const req = await this.tiempoService.getComuna(this.regionSel);
       this.comunas = req.data;
@@ -148,7 +148,7 @@ validarRut(rut: string): boolean {
     } catch (error) {
       
     }
-  }
+  } */
   
 
 

@@ -24,7 +24,7 @@
         <ion-input  [(ngModel)]="rut" label="Ingrese Rut:" type="tel" labelPlacement="floating" placeholder="21333111-1"></ion-input>
       </ion-item>
 
-    
+    <!-- 
       <ion-list>
         <ion-item>
           <ion-select (ionChange)="cargarComuna()" placeholder="Seleccione" [(ngModel)]="regionSel">
@@ -39,7 +39,7 @@
             <ion-select-option [value]="r.id" *ngFor="let r of comunas">{{r.nombre}}</ion-select-option>
           </ion-select>
         </ion-item>
-      </ion-list>
+      </ion-list> -->
 
       <ion-col>
         <ion-button class="xico1" (click)="registro()"  shape="round">Crear</ion-button>

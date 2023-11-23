@@ -15,14 +15,14 @@ export class TiempoService {
   
 
   constructor(private http:HttpClient) { }
-
+/* 
   async getRegion(){
     return await lastValueFrom(this.http.get<ApiResponse<any>>(`${environment.apiUrl}region`));
   }
 
   async getComuna(regionId:number){
     return await lastValueFrom(this.http.get<ApiResponse<any>>(`${environment.apiUrl}comuna/` + regionId));
-  }
+  } */
 
  
 
