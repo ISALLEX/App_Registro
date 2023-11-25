@@ -12,8 +12,8 @@ import { UserService } from 'src/app/services/user.service';
 import { StorageService } from 'src/app/services/storage.service';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { ToastController } from '@ionic/angular';
-import { TiempoService } from 'src/app/services/tiempo.service';
-import { Menu } from 'src/app/models/Menu';
+import { Menu } from 'src/app/models/menu';
+import { JokeService } from 'src/app/services/joke.service';
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.page.html',
@@ -28,6 +28,9 @@ export class MenuPage implements OnInit {
   arrayMenu:Menu[]=[];
 
   loading:boolean = true;
+
+  
+  chiste: string="";
   
 
  
@@ -52,6 +55,7 @@ export class MenuPage implements OnInit {
               private auth:AngularFireAuth,
               public toastController: ToastController,
               private navCtrl: NavController,
+              private jokeService: JokeService
              
               
 
@@ -195,5 +199,21 @@ ionViewWillLeave(){
 ionViewDidLeave(){
   console.log("Abandonó la vista");
   this.menuCtrl.close();
+}
+obtenerChisteProgramacion() {
+  this.jokeService.obtenerChisteProgramacion().subscribe(
+    (data: any) => {
+      if (data.type === 'twopart') {
+        this.chiste = `${data.setup} ${data.delivery}`;
+      } else if (data.type === 'single') {
+        this.chiste = data.joke;
+      } else {
+        this.chiste = 'No se pudo obtener un chiste válido.';
+      }
+    },
+    error => {
+      console.error('Error al obtener el chiste:', error);
+    }
+  );
 }
 }

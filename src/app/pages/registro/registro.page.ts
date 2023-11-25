@@ -5,8 +5,8 @@ import { HelperService } from 'src/app/services/helper.service';
 import { StorageService } from 'src/app/services/storage.service';
 import { Usuario } from 'src/app/models/usuario';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
-import { TiempoService } from 'src/app/services/tiempo.service';
-import { Region } from 'src/app/models/region';
+
+
 @Component({
   selector: 'app-registro',
   templateUrl: './registro.page.html',
@@ -18,25 +18,21 @@ export class RegistroPage implements OnInit {
   contrasenna:string = "";
   nombre:string = "";
   rut:string ="";
-  comunas:any[]=[];
-  regiones:Region[]=[];
-
-  comunaSel:number = 0;
-  regionSel:number = 0;
+ 
 
   constructor(private router:Router,
               private auth:AngularFireAuth,
               private helper:HelperService,
               private storageService:StorageService,
               private formBuilder: FormBuilder,
-              private tiempoService: TiempoService
+              
 
             ) { }
 
   ngOnInit() {
 
     this.vistaUser();
-   /*  this.cargarRegion(); */
+
 
   }
 
@@ -128,28 +124,6 @@ validarRut(rut: string): boolean {
   }
 
 
- /*  async cargarComuna(){
-    try {
-      const req = await this.tiempoService.getComuna(this.regionSel);
-      this.comunas = req.data;
-    } catch (error:any) {
-      console.log("ERROR", error);
-      
-      this.helper.mostrarAlerta(error.error.msg,"Error")
-    }
-  }
-
-  
-  async cargarRegion(){
-    try {
-      const req = await this.tiempoService.getRegion();
-      this.regiones = req.data;
-      console.log("REGIONES",this.regiones);
-    } catch (error) {
-      
-    }
-  } */
-  
 
 
 

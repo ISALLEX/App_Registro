@@ -17,8 +17,8 @@ export class ResulQrPage implements OnInit {
   
   dataAsistencia:any;
 
-  nombre:string = '';
-  asignatura:string = "";
+  nombre:string = "";
+  asignatura:any;
   docente:string = "";
   fecha:string = "";
   hora:string = "";
