@@ -13,7 +13,7 @@ export const environment = {
     appId: "1:617819479661:web:21bf194455475435bea964",
     measurementId: "G-P02N9CN9PG"
   },
-  apiUrl:"https://dev.matiivilla.cl/duoc/location/"
+
  
 };
 
