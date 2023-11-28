@@ -158,7 +158,7 @@ export class MenuPage implements OnInit {
         id:1,
         titulo:"Perfil",
         icono:"person-outline",
-        url:"/SECCION001D/perfil",
+        url:"/SECCION002D/perfil",
         disabled:true
       },
     )
